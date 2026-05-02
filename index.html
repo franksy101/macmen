@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MacMen — Pac-Man mit Marc, Emil, Simon, Leo, Frank, Milo & Bela</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="logo">MacMen</h1>
+      <div class="hud">
+        <div class="hud-item"><span class="label">Score</span><span id="score">0</span></div>
+        <div class="hud-item"><span class="label">High</span><span id="highscore">0</span></div>
+        <div class="hud-item"><span class="label">Level</span><span id="level">1</span></div>
+        <div class="hud-item"><span class="label">Leben</span><span id="lives">3</span></div>
+      </div>
+      <div class="controls-top">
+        <button id="muteBtn" class="btn-icon" title="Sound an/aus">🔊</button>
+        <button id="scoresBtn" class="btn-icon" title="Highscores">🏆</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <canvas id="game" width="560" height="620"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="panel">
+          <h2 id="overlay-title">Wähle deinen Helden</h2>
+          <p id="overlay-text">Sammle alle Punkte ein und weiche den anderen aus!</p>
+          <div id="characterPicker" class="character-picker"></div>
+          <button id="startBtn" class="btn-primary">Spiel starten</button>
+          <p class="hint">Steuerung: Pfeiltasten oder WASD · Mobile: Wischen</p>
+        </div>
+      </div>
+
+      <div id="scoresPanel" class="overlay hidden">
+        <div class="panel">
+          <h2>Highscores</h2>
+          <ol id="scoreList" class="scoreList"></ol>
+          <button id="closeScores" class="btn-primary">Schließen</button>
+        </div>
+      </div>
+
+      <div id="namePanel" class="overlay hidden">
+        <div class="panel">
+          <h2>Neuer Highscore!</h2>
+          <p>Punkte: <strong id="finalScore">0</strong></p>
+          <input id="nameInput" type="text" maxlength="12" placeholder="Dein Name" />
+          <button id="saveScore" class="btn-primary">Speichern</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="touchpad" aria-hidden="true">
+      <button class="tbtn up" data-dir="up">▲</button>
+      <button class="tbtn left" data-dir="left">◀</button>
+      <button class="tbtn down" data-dir="down">▼</button>
+      <button class="tbtn right" data-dir="right">▶</button>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/highscore.js"></script>
+  <script src="js/maze.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
