@@ -64,14 +64,17 @@
   };
 
   // ── Level-tuning ─────────────────────────────────────────────────────
+  // Level 1: Player 1.0, Ghost 0.7  (entspannt für Anfänger)
+  // Level 5: Player 1.6, Ghost 1.3
+  // ab Level 9: Maximum (Player 2.2, Ghost 2.0)
   function levelTuning(lv) {
     return {
-      playerSpeed:  Math.min(1.3 + lv * 0.10, 2.6),
-      ghostSpeed:   Math.min(1.0 + lv * 0.10, 2.3),
-      ghostScared:  Math.max(0.9 - lv * 0.03, 0.6),
-      ghostEaten:   3.0,
+      playerSpeed:  Math.min(0.85 + lv * 0.15, 2.2),
+      ghostSpeed:   Math.min(0.55 + lv * 0.15, 2.0),
+      ghostScared:  Math.max(0.7 - lv * 0.03, 0.45),
+      ghostEaten:   2.6,
       powerTime:    Math.max(420 - lv * 30, 120), // frames @60fps
-      releaseInterval: Math.max(260 - lv * 18, 80), // frames between ghost releases
+      releaseInterval: Math.max(360 - lv * 24, 100), // frames between ghost releases
       fruitValue:   100 + (lv - 1) * 100,
     };
   }
