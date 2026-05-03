@@ -398,7 +398,7 @@
   }
 
   function initLevel() {
-    state.grid = parseMaze();
+    state.grid = parseMaze(state.level - 1);
     state.pelletsLeft = countPellets(state.grid);
     state.initialPellets = state.pelletsLeft;
     state.powerTimer = 0;
