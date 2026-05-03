@@ -66,12 +66,12 @@
   // ── Level-tuning ─────────────────────────────────────────────────────
   function levelTuning(lv) {
     return {
-      playerSpeed:  Math.min(2.0 + lv * 0.10, 3.2),
-      ghostSpeed:   Math.min(1.5 + lv * 0.12, 2.8),
-      ghostScared:  Math.max(1.4 - lv * 0.05, 0.9),
-      ghostEaten:   3.6,
-      powerTime:    Math.max(360 - lv * 30, 90), // frames @60fps
-      releaseInterval: Math.max(220 - lv * 18, 60), // frames between ghost releases
+      playerSpeed:  Math.min(1.3 + lv * 0.10, 2.6),
+      ghostSpeed:   Math.min(1.0 + lv * 0.10, 2.3),
+      ghostScared:  Math.max(0.9 - lv * 0.03, 0.6),
+      ghostEaten:   3.0,
+      powerTime:    Math.max(420 - lv * 30, 120), // frames @60fps
+      releaseInterval: Math.max(260 - lv * 18, 80), // frames between ghost releases
       fruitValue:   100 + (lv - 1) * 100,
     };
   }
