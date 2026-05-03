@@ -1,33 +1,36 @@
-// Maze layout — 20 cols x 22 rows
-// 1 = wall, 0 = pellet, 2 = power pellet, 3 = empty, 4 = ghost door, 9 = ghost spawn
+// Maze layout — 21 cols x 23 rows
+// Symmetrisches Layout angelehnt an klassisches Pacman
+//   1 = wall    0 = pellet    2 = power pellet    3 = empty
+//   4 = ghost door    5 = ghost house interior
 const MAZE_LAYOUT = [
-  "11111111111111111111",
-  "12000000001000000021",
-  "10111011110101111010",
-  "10111011110101111010",
-  "10000000000000000000",
-  "10110101111101010110",
-  "10000100000000010000",
-  "11110131111113101111",
-  "33330131311113101333",
-  "11110131911113101111",
-  "33333031999913033333",
-  "11110131111113101111",
-  "33330131111113101333",
-  "11110131111113101111",
-  "10000000000100000000",
-  "10110111110101111010",
-  "12001000000000010021",
-  "11101010111110101011",
-  "10000010000000100000",
-  "10111111110111111110",
-  "10000000000000000000",
-  "11111111111111111111",
+  "111111111111111111111", // 0
+  "100000000010000000001", // 1
+  "102111011110111110021", // 2
+  "100000000000000000001", // 3
+  "101101111010111101101", // 4
+  "100000001010100000001", // 5
+  "111110111010111011111", // 6
+  "111110100000000101111", // 7
+  "111110101144110101111", // 8
+  "333330101555510103333", // 9   tunnel row
+  "111110101555510101111", // 10
+  "333330101555510103333", // 11  tunnel row
+  "111110101111110101111", // 12
+  "111110100000000101111", // 13
+  "111110111010111011111", // 14
+  "100000000010000000001", // 15
+  "102111011110111110021", // 16
+  "100100000000000001001", // 17
+  "111100110111110011111", // 18
+  "100000010000010000001", // 19
+  "101111110111110111101", // 20
+  "100000000000000000001", // 21
+  "111111111111111111111", // 22
 ];
 
-const TILE_SIZE = 28;
-const COLS = 20;
-const ROWS = 22;
+const TILE_SIZE = 26;
+const COLS = 21;
+const ROWS = 23;
 
 const TILE = {
   WALL: 1,
@@ -35,7 +38,7 @@ const TILE = {
   POWER: 2,
   EMPTY: 3,
   DOOR: 4,
-  SPAWN: 9,
+  HOUSE: 5,
 };
 
 function parseMaze() {
@@ -64,3 +67,16 @@ function countPellets(grid) {
 function isWalkable(tile) {
   return tile !== TILE.WALL && tile !== undefined;
 }
+
+// Spawn-Punkte (werden in game.js verwendet)
+const PLAYER_SPAWN = { col: 10, row: 17 };
+// Tür: (10,8) und (11,8) — Spawnpunkte und Exit zentriert dazwischen (col 10)
+const GHOST_DOOR = { col: 10, row: 8 };
+const GHOST_HOUSE = [
+  { col: 9,  row: 10 },
+  { col: 10, row: 10 },
+  { col: 11, row: 10 },
+  { col: 12, row: 10 },
+];
+const GHOST_RETURN = { col: 10, row: 8 };  // Tür-Tile selbst
+const GHOST_EXIT   = { col: 10, row: 7 };  // direkt über der Tür, außerhalb
